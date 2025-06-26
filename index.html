@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuspal - The Apex of Intelligent Healthcare Solutions</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon - using the uploaded logo -->
+    <link rel="icon" href="https://storage.googleapis.com/gemini-prod-us-west1-423528435759/uploaded/high-def-logo-by-gpt.jpg-7b11dfe2-9a40-49e5-bc30-e990cc301048">
+
+    <style>
+        /* Custom styles to complement Tailwind */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #120c1f; /* Darker purple base */
+            color: #f0f0f0; 
+            overflow-x: hidden; /* Prevent horizontal scrollbars from animations */
+        }
+
+        /* Vivid hero section gradient background inspired by the logo */
+        .hero-gradient {
+            background-color: #120c1f;
+            background-image:
+                radial-gradient(at 10% 20%, hsla(28, 96%, 62%, 0.3) 0px, transparent 50%),
+                radial-gradient(at 85% 30%, hsla(320, 90%, 55%, 0.35) 0px, transparent 50%),
+                radial-gradient(at 15% 85%, hsla(205, 98%, 55%, 0.3) 0px, transparent 50%),
+                radial-gradient(at 80% 90%, hsla(260, 80%, 60%, 0.25) 0px, transparent 50%);
+        }
+
+        /* Glassmorphism effect for cards with a new vibrant tint */
+        .glass-card {
+            background: rgba(56, 30, 99, 0.5);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #f97316, transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .glass-card:hover:before {
+            opacity: 1;
+        }
+
+        /* Glow effect matching the logo's orange/pink tones */
+        .glow-on-hover:hover {
+            box-shadow: 0 0 25px hsla(28, 96%, 62%, 0.6), 0 0 10px hsla(320, 90%, 60%, 0.4);
+        }
+
+        /* Custom button color matching the logo's orange */
+        .btn-vivid {
+            background-color: #f97316; /* Tailwind orange-500 */
+        }
+        .btn-vivid:hover {
+            background-color: #ea580c; /* Tailwind orange-600 */
+        }
+
+        /* Gradient for section titles */
+        .section-title-gradient {
+            background: linear-gradient(90deg, #f59e0b, #ec4899, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        /* Styles for scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+            will-change: opacity, transform; /* Optimize animation performance */
+        }
+
+        .animate-fade-in-up {
+            transform: translateY(50px);
+        }
+
+        .animate-fade-in-left {
+            transform: translateX(-50px);
+        }
+        
+        .animate-fade-in-right {
+            transform: translateX(50px);
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3">
+                    <img src="https://storage.googleapis.com/gemini-prod-us-west1-423528435759/uploaded/high-def-logo-by-gpt.jpg-7b11dfe2-9a40-49e5-bc30-e990cc301048" alt="Cuspal Logo" class="h-10 w-10">
+                    <span class="text-2xl font-bold text-white">Cuspal</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-300 hover:text-white transition-colors">About Us</a>
+                    <a href="#products" class="text-gray-300 hover:text-white transition-colors">Products</a>
+                    <a href="#features" class="text-gray-300 hover:text-white transition-colors">Why Cuspal</a>
+                </nav>
+
+                <!-- Contact Button -->
+                <a href="#contact" class="hidden md:inline-block btn-vivid text-white font-semibold px-5 py-2 rounded-lg transition-all duration-300 glow-on-hover">
+                    Contact Sales
+                </a>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800">
+            <a href="#about" class="block text-gray-300 hover:text-white transition-colors px-6 py-3">About Us</a>
+            <a href="#products" class="block text-gray-300 hover:text-white transition-colors px-6 py-3">Products</a>
+            <a href="#features" class="block text-gray-300 hover:text-white transition-colors px-6 py-3">Why Cuspal</a>
+            <a href="#contact" class="block text-gray-300 hover:text-white transition-colors px-6 py-3">Contact Sales</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-gradient pt-32 pb-20 md:pt-48 md:pb-32">
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 animate-on-scroll animate-fade-in-up is-visible">
+                    The Apex of Intelligent Healthcare Solutions
+                </h1>
+                <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 animate-on-scroll animate-fade-in-up is-visible" style="transition-delay: 200ms;">
+                    Revolutionizing healthcare through AI-powered innovation, we empower providers, accelerate research, and improve patient outcomes.
+                </p>
+                <div class="flex justify-center space-x-4 animate-on-scroll animate-fade-in-up is-visible" style="transition-delay: 400ms;">
+                    <a href="#products" class="btn-vivid text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 glow-on-hover">
+                        Explore Our Products
+                    </a>
+                    <a href="#contact" class="bg-gray-700 text-white font-semibold px-8 py-3 rounded-lg hover:bg-gray-600 transition-all duration-300">
+                        Request a Demo
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us / Mission Section -->
+        <section id="about" class="py-20 md:py-28">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="text-center md:text-left animate-on-scroll animate-fade-in-left">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title-gradient">Our Vision & Mission</h2>
+                        <p class="text-gray-300 mb-6">
+                            As pioneers in healthcare AI acceleration, we envision a world where technology amplifies human potential. Our mission transcends extending life – we empower people to live with dignity, purpose, and the health necessary to achieve their dreams and leave their mark on the world.
+                        </p>
+                    </div>
+                    <div class="animate-on-scroll animate-fade-in-right">
+                        <div class="relative h-64 md:h-80 rounded-2xl p-2 flex items-center justify-center" >
+                           <div class="absolute inset-0 bg-gradient-to-br from-orange-500/20 via-pink-500/20 to-purple-600/20 rounded-2xl blur-2xl"></div>
+                           <img src="https://storage.googleapis.com/gemini-prod-us-west1-423528435759/uploaded/high-def-logo-by-gpt.jpg-7b11dfe2-9a40-49e5-bc30-e990cc301048" alt="Cuspal Logo" class="relative h-32 w-32 z-10">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Features / Why Cuspal Section -->
+        <section id="features" class="py-20 md:py-28 bg-black bg-opacity-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 animate-on-scroll animate-fade-in-up">
+                    <h2 class="text-3xl md:text-4xl font-bold section-title-gradient">Foundation for Innovation</h2>
+                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Our platform is built on four pillars, ensuring robust, secure, and effective solutions for healthcare.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="glass-card p-6 rounded-xl text-center animate-on-scroll animate-fade-in-up">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-purple-500/20 mx-auto mb-4 border border-purple-400/50">
+                             <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Healthcare Focused</h3>
+                        <p class="text-gray-400">Purpose-built with a deep understanding of clinical workflows and regulatory needs.</p>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="glass-card p-6 rounded-xl text-center animate-on-scroll animate-fade-in-up" style="transition-delay: 150ms;">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-pink-500/20 mx-auto mb-4 border border-pink-400/50">
+                            <svg class="w-8 h-8 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Seamless Integration</h3>
+                        <p class="text-gray-400">Native support for all major healthcare standards: FHIR, OMOP, OpenEHR, HL7, and DICOM.</p>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="glass-card p-6 rounded-xl text-center animate-on-scroll animate-fade-in-up" style="transition-delay: 300ms;">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-orange-500/20 mx-auto mb-4 border border-orange-400/50">
+                            <svg class="w-8 h-8 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Security-Aware</h3>
+                        <p class="text-gray-400">HIPAA-compliant, end-to-end encryption, and a zero-trust architecture.</p>
+                    </div>
+                    <!-- Feature 4 -->
+                    <div class="glass-card p-6 rounded-xl text-center animate-on-scroll animate-fade-in-up" style="transition-delay: 450ms;">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-cyan-500/20 mx-auto mb-4 border border-cyan-400/50">
+                             <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h10a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.7 9.3l.065-.065a2 2 0 012.828 0l.065.065m10.24-4.566l-.065.065a2 2 0 00-2.828 0l-.065-.065m-3.5 11.314l.065.065a2 2 0 010 2.828l-.065.065M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Global Scale</h3>
+                        <p class="text-gray-400">Multi-language, multi-region support with 99.9% uptime and enterprise-grade reliability.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="py-20 md:py-28">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 animate-on-scroll animate-fade-in-up">
+                    <h2 class="text-3xl md:text-4xl font-bold section-title-gradient">Our Suite of AI Solutions</h2>
+                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto">A comprehensive ecosystem of products designed to accelerate every aspect of healthcare innovation.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Product Cards -->
+                    <div class="glass-card rounded-xl p-8 flex flex-col h-full animate-on-scroll animate-fade-in-up">
+                        <h3 class="text-2xl font-bold text-white mb-2">cuspal Caddy</h3>
+                        <p class="text-gray-400 mb-6 flex-grow">Revolutionary hands-free clinician assistant powered by voice recognition and contextual AI.</p>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Voice-activated patient data</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Real-time clinical decision support</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Understands screen activity, no touch</li>
+                        </ul>
+                    </div>
+                    <div class="glass-card rounded-xl p-8 flex flex-col h-full animate-on-scroll animate-fade-in-up" style="transition-delay: 150ms;">
+                        <h3 class="text-2xl font-bold text-white mb-2">cuspal JustChat</h3>
+                        <p class="text-gray-400 mb-6 flex-grow">Advanced conversational AI chatbot engineered for healthcare with deep integration capabilities.</p>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Native FHIR, OMOP, OpenEHR integration</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Advanced vector store for retrieval</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Deep Research Modules</li>
+                        </ul>
+                    </div>
+                    <div class="glass-card rounded-xl p-8 flex flex-col h-full animate-on-scroll animate-fade-in-up" style="transition-delay: 300ms;">
+                        <h3 class="text-2xl font-bold text-white mb-2">cuspal GetLLMHosted</h3>
+                        <p class="text-gray-400 mb-6 flex-grow">Enterprise-grade local LLM hosting for maximum data privacy, compliance, and performance.</p>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>On-premise deployment with air-gap</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>HIPAA-compliant infrastructure</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>High-availability clustering</li>
+                        </ul>
+                    </div>
+                    <div class="glass-card rounded-xl p-8 flex flex-col h-full animate-on-scroll animate-fade-in-up">
+                        <h3 class="text-2xl font-bold text-white mb-2">cuspal GetFHIRHosted</h3>
+                        <p class="text-gray-400 mb-6 flex-grow">Enterprise cloud FHIR server with advanced mapping for seamless data interoperability.</p>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>HL7 FHIR R4/R5 compliant</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Advanced data mapping tools</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Multi-system synchronization</li>
+                        </ul>
+                    </div>
+                    <div class="glass-card rounded-xl p-8 flex flex-col h-full animate-on-scroll animate-fade-in-up" style="transition-delay: 150ms;">
+                        <h3 class="text-2xl font-bold text-white mb-2">cuspal GetAsk</h3>
+                        <p class="text-gray-400 mb-6 flex-grow">Strategic healthcare AI consulting with expert guidance for digital transformation.</p>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>AI readiness & strategic roadmapping</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Technical architecture design</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Change management & training</li>
+                        </ul>
+                    </div>
+                    <div class="glass-card rounded-xl p-8 flex flex-col h-full animate-on-scroll animate-fade-in-up" style="transition-delay: 300ms;">
+                        <h3 class="text-2xl font-bold text-white mb-2">cuspal GetYoursBoosted</h3>
+                        <p class="text-gray-400 mb-6 flex-grow">Research commercialization acceleration platform for medical and dental institutions.</p>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Research-to-product transformation</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Full-stack development & deployment</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Regulatory pathway guidance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-28 bg-black bg-opacity-20">
+            <div class="container mx-auto px-6 text-center animate-on-scroll animate-fade-in-up">
+                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Transform Healthcare?</h2>
+                 <p class="text-gray-300 max-w-2xl mx-auto mb-8">
+                    Reach out to our sales team to schedule a personalized demo and discover how Cuspal's AI solutions can elevate your organization.
+                 </p>
+                 <a href="mailto:sales@cuspal.co" class="inline-block btn-vivid text-white font-bold text-lg px-10 py-4 rounded-lg transition-all duration-300 glow-on-hover">
+                    Contact Us: sales@cuspal.co
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900/50">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                     <img src="https://storage.googleapis.com/gemini-prod-us-west1-423528435759/uploaded/high-def-logo-by-gpt.jpg-7b11dfe2-9a40-49e5-bc30-e990cc301048" alt="Cuspal Logo" class="h-8 w-8">
+                    <span class="text-xl font-bold text-white">Cuspal</span>
+                </div>
+                <div class="text-center text-gray-400">
+                    &copy; 2024 Cuspal Inc. All Rights Reserved.
+                </div>
+                 <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- Mobile menu toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // --- Header background change on scroll ---
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('bg-[#120c1f]', 'shadow-lg');
+            } else {
+                header.classList.remove('bg-[#120c1f]', 'shadow-lg');
+            }
+        });
+
+        // --- Scroll Animation Logic ---
+        const scrollElements = document.querySelectorAll(".animate-on-scroll");
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // When the element is in view, add the 'is-visible' class
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger animation when 10% of the element is visible
+        });
+
+        // Observe each element tagged for animation
+        scrollElements.forEach(el => {
+            observer.observe(el);
+        });
+
+    </script>
+
+</body>
+</html>
