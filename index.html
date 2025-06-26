@@ -113,6 +113,32 @@
             transform: translate(0, 0);
         }
 
+                /* Breakthrough Graphic Styles */
+        .breakthrough-container {
+            position: relative;
+            width: 100%;
+            min-height: 320px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .breakthrough-logo {
+            position: relative;
+            z-index: 10;
+        }
+        .line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, #ec4899, #f97316, transparent);
+            height: 1px;
+            opacity: 0;
+            animation: emerge 4s infinite ease-in-out;
+        }
+        @keyframes emerge {
+            0% { transform: scaleX(0); opacity: 0; }
+            50% { transform: scaleX(1); opacity: 0.7; }
+            100% { transform: scaleX(0); opacity: 0; }
+        }
+
     </style>
 </head>
 <body class="antialiased">
@@ -437,6 +463,26 @@
         // Observe each element tagged for animation
         scrollElements.forEach(el => {
             observer.observe(el);
+        });
+
+                // --- Breakthrough Graphic Animation ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.breakthrough-container');
+            const numLines = 20;
+            for (let i = 0; i < numLines; i++) {
+                const line = document.createElement('div');
+                line.classList.add('line');
+                const rotation = Math.random() * 360;
+                const width = Math.random() * 100 + 100; // 100 to 200px
+                const delay = Math.random() * 4;
+                
+                line.style.width = `${width}px`;
+                line.style.transformOrigin = 'left center';
+                line.style.transform = `rotate(${rotation}deg) scaleX(0)`;
+                line.style.animationDelay = `${delay}s`;
+
+                container.appendChild(line);
+            }
         });
 
     </script>
